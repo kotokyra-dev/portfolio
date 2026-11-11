@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { siteContent, type Language } from '../content'
 import { buildPath, type Route } from '../router'
 
-const ORIGIN = 'https://portfolio-kotokyra.vercel.app'
+const ORIGIN = 'https://kotok.site'
 
 function setMeta(selector: string, value: string) {
   document.querySelector(selector)?.setAttribute('content', value)

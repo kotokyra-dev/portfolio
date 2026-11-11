@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-kotokyra.vercel.app/sitemap.xml
+Sitemap: https://kotok.site/sitemap.xml
