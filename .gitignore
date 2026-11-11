@@ -26,3 +26,10 @@ dist-ssr
 .vercel
 .env*
 !.env.example
+
+# служебные файлы
+vercel_login.txt
+gh_login.txt
+finish_log.txt
+domain_watch.log
+
