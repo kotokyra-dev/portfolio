@@ -83,7 +83,7 @@ export type SiteContent = {
     description: string
     tags: string[]
     year: string
-    tone: 'violet' | 'cyan' | 'amber' | 'pink'
+    tone: 'violet' | 'cyan' | 'amber' | 'pink' | 'lime'
     demoId: DemoId | null
     demoUrl: string | null
     codeUrl: string
@@ -536,6 +536,33 @@ export const siteContent: Record<Language, SiteContent> = {
             { value: '2', label: 'языка' },
             { value: '2', label: 'темы' },
             { value: '0', label: 'UI-библиотек' },
+          ],
+        },
+      },
+      {
+        title: 'NeuroHelper',
+        description:
+          'Бесплатный ИИ-ассистент в Telegram: ответы с памятью диалога, генерация картинок на FLUX, разбор фото и голоса, монетизация через встроенные платежи Telegram Stars.',
+        tags: ['Python', 'Telegram', 'AI'],
+        year: '2026',
+        tone: 'lime',
+        demoId: null,
+        demoUrl: 'https://t.me/kotyura_bot',
+        codeUrl: 'https://t.me/kotyura_bot',
+        case: {
+          challenge:
+            'Нужен был ИИ-ассистент, которым пользуются прямо в чате, без регистрации и VPN, и который при этом зарабатывает без внешних платёжных систем и договоров.',
+          solution: [
+            'Собрал бота на Python: память диалога, генерация картинок через FLUX, разбор фото и голосовых сообщений, цепочка резервных ИИ-провайдеров.',
+            'Сделал freemium: бесплатные запросы в день, Premium и кредиты — оплата встроенными средствами Telegram (Stars).',
+            'Добавил реферальную программу с наградами за приглашённых, лимиты, админку и автоперезапуск через watchdog.',
+          ],
+          result:
+            'Пользователю не нужен аккаунт, карта и VPN, а монетизация идёт по встроенным платежам Telegram — без эквайринга, договоров и налоговой сложности.',
+          metrics: [
+            { value: '0 ₽', label: 'порог входа для пользователя' },
+            { value: 'Stars', label: 'встроенные платежи Telegram' },
+            { value: '24/7', label: 'watchdog и автоперезапуск' },
           ],
         },
       },
@@ -992,6 +1019,33 @@ export const siteContent: Record<Language, SiteContent> = {
             { value: '2', label: 'languages' },
             { value: '2', label: 'themes' },
             { value: '0', label: 'UI libraries' },
+          ],
+        },
+      },
+      {
+        title: 'NeuroHelper',
+        description:
+          'A free AI assistant inside Telegram: chat with memory, FLUX image generation, photo and voice analysis, monetized through Telegram Stars.',
+        tags: ['Python', 'Telegram', 'AI'],
+        year: '2026',
+        tone: 'lime',
+        demoId: null,
+        demoUrl: 'https://t.me/kotyura_bot',
+        codeUrl: 'https://t.me/kotyura_bot',
+        case: {
+          challenge:
+            'An AI assistant people could use right inside a chat, with no signup and no VPN, that still earns money without any external payment provider or contracts.',
+          solution: [
+            'Built the bot in Python: conversation memory, FLUX image generation, photo and voice analysis, and a chain of fallback AI providers.',
+            'Built a freemium model: free daily quota, Premium and credit packs paid with Telegram Stars.',
+            'Added a referral program with milestone rewards, usage limits, an admin panel and a watchdog for automatic restarts.',
+          ],
+          result:
+            'Users need no account, card or VPN, while payments run through Telegram built-ins — no acquirer, contracts or tax complexity.',
+          metrics: [
+            { value: '$0', label: 'entry cost for users' },
+            { value: 'Stars', label: 'Telegram built-in payments' },
+            { value: '24/7', label: 'watchdog and auto-restart' },
           ],
         },
       },

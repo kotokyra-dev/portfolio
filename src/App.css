@@ -803,6 +803,10 @@
   background: linear-gradient(135deg, #ec4899, #f43f5e);
 }
 
+.project__thumb--lime {
+  background: linear-gradient(135deg, #10b981, #a3e635);
+}
+
 .project__mock {
   position: relative;
   z-index: 1;
