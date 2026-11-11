@@ -67,6 +67,14 @@ export function ArrowUpIcon(props: IconProps) {
   )
 }
 
+export function PlayIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" {...stroke} aria-hidden="true" {...props}>
+      <path d="M8 5.5v13l10-6.5-10-6.5Z" />
+    </svg>
+  )
+}
+
 export function SunIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" {...stroke} aria-hidden="true" {...props}>

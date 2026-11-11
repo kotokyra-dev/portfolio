@@ -19,7 +19,7 @@ export function Hero() {
 
           <Reveal delay={80}>
             <h1 className="hero__title">
-              {ui.heroTitleStart} <span className="grad">{profile.shortName}</span>.
+              {ui.heroTitleStart} <span className="grad">{profile.shortName}</span>
               <br />
               {ui.heroTitleEnd}
             </h1>

@@ -311,12 +311,14 @@
 
 .hero__title {
   margin-top: 24px;
-  font-size: clamp(38px, 6vw, 66px);
-  line-height: 1.02;
+  font-size: calc(clamp(38px, 6vw, 66px) - 0.5px);
+  line-height: 1.14;
   letter-spacing: -0.045em;
 }
 
 .grad {
+  font-size: calc(1em - 1.5px);
+  padding-bottom: 0.08em;
   background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -605,7 +607,7 @@
 .section__title {
   margin-top: 16px;
   font-size: clamp(30px, 4.2vw, 46px);
-  line-height: 1.08;
+  line-height: 1.12;
 }
 
 .section__lead {
@@ -801,19 +803,175 @@
   background: linear-gradient(135deg, #ec4899, #f43f5e);
 }
 
-.project__num {
+.project__mock {
   position: relative;
   z-index: 1;
-  font-family: var(--font-display);
-  font-size: clamp(56px, 9vw, 92px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: rgba(255, 255, 255, 0.92);
+  width: min(76%, 300px);
+  padding: 9px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 20px 44px -20px rgba(18, 10, 60, 0.65);
   transition: transform 0.4s ease;
 }
 
-.project:hover .project__num {
-  transform: scale(1.06);
+.project:hover .project__mock {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.project__mock-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.project__mock-bar i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(24, 18, 48, 0.18);
+}
+
+.project__mock-chart {
+  display: block;
+  width: 100%;
+  height: 46px;
+  overflow: visible;
+}
+
+.project__mock-chart path {
+  fill: none;
+  stroke: #6d5efc;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project__mock-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.project__mock-row span {
+  flex: 1;
+  height: 13px;
+  border-radius: 5px;
+  background: rgba(24, 18, 48, 0.08);
+}
+
+.project__mock-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.project__mock-grid span {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: rgba(14, 165, 233, 0.2);
+}
+
+.project__mock-grid span:nth-child(2) {
+  background: rgba(14, 165, 233, 0.32);
+}
+
+.project__mock-grid span:nth-child(3) {
+  background: rgba(34, 211, 238, 0.28);
+}
+
+.project__mock-grid span:nth-child(4) {
+  background: rgba(14, 165, 233, 0.14);
+}
+
+.project__mock-fit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project__mock-ring {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: conic-gradient(#f97316 0 68%, rgba(24, 18, 48, 0.1) 0);
+  -webkit-mask: radial-gradient(circle, transparent 52%, #000 54%);
+  mask: radial-gradient(circle, transparent 52%, #000 54%);
+}
+
+.project__mock-lines {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project__mock-lines span {
+  height: 9px;
+  border-radius: 4px;
+  background: rgba(24, 18, 48, 0.1);
+}
+
+.project__mock-lines span:nth-child(1) {
+  width: 88%;
+}
+
+.project__mock-lines span:nth-child(2) {
+  width: 70%;
+}
+
+.project__mock-lines span:nth-child(3) {
+  width: 78%;
+}
+
+.project__mock-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0 2px;
+}
+
+.project__mock-line {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(24, 18, 48, 0.1);
+}
+
+.project__mock-line--lg {
+  width: 78%;
+  height: 13px;
+  background: linear-gradient(90deg, #ec4899, #f43f5e);
+  opacity: 0.85;
+}
+
+.project__mock-line--sm {
+  width: 52%;
+}
+
+.project__badge {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 99px;
+  background: rgba(12, 12, 22, 0.34);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(6px);
+}
+
+.project__badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.22);
 }
 
 .project__body {
@@ -884,6 +1042,13 @@
 .link:hover {
   gap: 9px;
   opacity: 0.85;
+}
+
+.link--button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
 
 /* =========================================================
@@ -1082,7 +1247,7 @@
   }
 
   .hero__title {
-    font-size: clamp(36px, 8vw, 54px);
+    font-size: calc(clamp(36px, 8vw, 54px) - 0.5px);
   }
 
   .skills__grid {

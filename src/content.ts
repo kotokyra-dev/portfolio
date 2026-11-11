@@ -5,6 +5,8 @@
 
 export type Language = 'ru' | 'en'
 
+export type DemoId = 'orbit' | 'store' | 'fitness'
+
 export type SiteContent = {
   meta: { title: string; description: string }
   nav: { id: string; label: string }[]
@@ -28,7 +30,9 @@ export type SiteContent = {
     tags: string[]
     year: string
     tone: 'violet' | 'cyan' | 'amber' | 'pink'
-    links: { demo: string; code: string }
+    demoId: DemoId | null
+    demoUrl: string | null
+    codeUrl: string
   }[]
   socials: { label: string; href: string; icon: 'github' | 'telegram' | 'linkedin' }[]
   ui: {
@@ -84,7 +88,7 @@ export const siteContent: Record<Language, SiteContent> = {
     ],
     profile: {
       name: 'Yury Katok',
-      shortName: 'Yury',
+      shortName: 'Юрий',
       initials: 'YK',
       role: 'Frontend-разработчик',
       availability: 'Открыт к новым проектам',
@@ -136,38 +140,46 @@ export const siteContent: Record<Language, SiteContent> = {
       {
         title: 'Orbit Dashboard',
         description:
-          'Аналитическая панель для SaaS: интерактивные графики, фильтры и тёмная тема из коробки.',
-        tags: ['React', 'TypeScript', 'Recharts'],
+          'Аналитическая панель: интерактивный SVG-график, переключение периода и разбивка по источникам трафика. Всё считается на клиенте.',
+        tags: ['React', 'TypeScript', 'SVG'],
         year: '2026',
         tone: 'violet',
-        links: { demo: '#', code: '#' },
+        demoId: 'orbit',
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
       {
         title: 'Nord Store',
         description:
-          'Интернет-магазин с каталогом, корзиной и оплатой. Быстрая навигация и SEO-оптимизация.',
-        tags: ['Next.js', 'Stripe', 'Tailwind'],
-        year: '2025',
+          'Мини-магазин с фильтрами по категориям, сортировкой по цене и рабочей корзиной: количество, сумма и оформление заказа.',
+        tags: ['React', 'TypeScript', 'State'],
+        year: '2026',
         tone: 'cyan',
-        links: { demo: '#', code: '#' },
+        demoId: 'store',
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
       {
         title: 'Pulse Fit',
         description:
-          'Веб-трекер тренировок как PWA: офлайн-режим, push-уведомления и плавные переходы.',
-        tags: ['React', 'PWA', 'IndexedDB'],
-        year: '2025',
+          'Трекер тренировок: недельная цель, добавление и удаление записей, сохранение прогресса в localStorage между визитами.',
+        tags: ['React', 'TypeScript', 'localStorage'],
+        year: '2026',
         tone: 'amber',
-        links: { demo: '#', code: '#' },
+        demoId: 'fitness',
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
       {
-        title: 'Aurora UI',
+        title: 'Portfolio',
         description:
-          'Дизайн-система из 60+ компонентов с документацией в Storybook и полной поддержкой a11y.',
-        tags: ['Storybook', 'Design System', 'a11y'],
-        year: '2024',
+          'Этот сайт: двуязычный интерфейс (RU/EN), светлая и тёмная темы, адаптивная вёрстка и анимации при прокрутке.',
+        tags: ['React', 'Vite', 'i18n'],
+        year: '2026',
         tone: 'pink',
-        links: { demo: '#', code: '#' },
+        demoId: null,
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
     ],
     socials: [
@@ -280,38 +292,46 @@ export const siteContent: Record<Language, SiteContent> = {
       {
         title: 'Orbit Dashboard',
         description:
-          'Analytics dashboard for a SaaS product: interactive charts, filters and dark mode out of the box.',
-        tags: ['React', 'TypeScript', 'Recharts'],
+          'Analytics dashboard with an interactive SVG chart, period switching and a traffic-source breakdown. All computed on the client.',
+        tags: ['React', 'TypeScript', 'SVG'],
         year: '2026',
         tone: 'violet',
-        links: { demo: '#', code: '#' },
+        demoId: 'orbit',
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
       {
         title: 'Nord Store',
         description:
-          'Online store with a catalogue, cart and checkout. Fast navigation and SEO-friendly pages.',
-        tags: ['Next.js', 'Stripe', 'Tailwind'],
-        year: '2025',
+          'Mini store with category filters, price sorting and a working cart: quantities, total and checkout flow.',
+        tags: ['React', 'TypeScript', 'State'],
+        year: '2026',
         tone: 'cyan',
-        links: { demo: '#', code: '#' },
+        demoId: 'store',
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
       {
         title: 'Pulse Fit',
         description:
-          'Workout tracker built as a PWA: offline mode, push notifications and smooth transitions.',
-        tags: ['React', 'PWA', 'IndexedDB'],
-        year: '2025',
+          'Workout tracker with a weekly goal, add and delete entries, and progress saved to localStorage between visits.',
+        tags: ['React', 'TypeScript', 'localStorage'],
+        year: '2026',
         tone: 'amber',
-        links: { demo: '#', code: '#' },
+        demoId: 'fitness',
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
       {
-        title: 'Aurora UI',
+        title: 'Portfolio',
         description:
-          'A design system of 60+ components documented in Storybook with full a11y support.',
-        tags: ['Storybook', 'Design System', 'a11y'],
-        year: '2024',
+          'This site: bilingual UI (RU/EN), light and dark themes, responsive layout and scroll animations.',
+        tags: ['React', 'Vite', 'i18n'],
+        year: '2026',
         tone: 'pink',
-        links: { demo: '#', code: '#' },
+        demoId: null,
+        demoUrl: null,
+        codeUrl: 'https://github.com/kotokyra-dev/portfolio',
       },
     ],
     socials: [
