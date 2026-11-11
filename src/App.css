@@ -272,6 +272,12 @@
   border-color: var(--accent-border);
 }
 
+.icon-btn.is-active {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 /* =========================================================
    Первый экран
    ========================================================= */

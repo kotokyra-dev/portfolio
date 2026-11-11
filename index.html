@@ -26,6 +26,10 @@
             lang = (navigator.language || 'en').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en'
           }
           document.documentElement.lang = lang
+
+          if (localStorage.getItem('motion') === 'on') {
+            document.documentElement.dataset.motion = 'on'
+          }
         } catch (error) {
           document.documentElement.dataset.theme = 'light'
           document.documentElement.lang = 'ru'
