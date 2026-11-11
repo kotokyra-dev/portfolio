@@ -15,6 +15,39 @@ export type ProjectCase = {
   metrics: { value: string; label: string }[]
 }
 
+export type ExperienceItem = {
+  period: string
+  role: string
+  company: string
+  summary: string
+  points: string[]
+  stack: string[]
+}
+
+export type Testimonial = {
+  quote: string
+  name: string
+  role: string
+  initials: string
+}
+
+export type BlogBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'quote'; text: string }
+
+export type BlogPost = {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+  dateLabel: string
+  readingTime: string
+  tags: string[]
+  blocks: BlogBlock[]
+}
+
 export type SiteContent = {
   meta: { title: string; description: string }
   nav: { id: string; label: string }[]
@@ -31,6 +64,19 @@ export type SiteContent = {
     stats: { value: string; label: string }[]
   }
   facts: { icon: 'code' | 'spark' | 'gauge'; title: string; text: string }[]
+  experience: ExperienceItem[]
+  testimonials: Testimonial[]
+  blog: {
+    metaTitle: string
+    metaDescription: string
+    title: string
+    lead: string
+    backHome: string
+    readMore: string
+    backToBlog: string
+    minRead: string
+    posts: BlogPost[]
+  }
   skills: { title: string; items: string[] }[]
   projects: {
     title: string
@@ -61,6 +107,16 @@ export type SiteContent = {
     aboutEyebrow: string
     aboutTitle: string
     aboutLead: string
+    experienceEyebrow: string
+    experienceTitle: string
+    experienceLead: string
+    testimonialsEyebrow: string
+    testimonialsTitle: string
+    testimonialsLead: string
+    blogNav: string
+    notFoundTitle: string
+    notFoundText: string
+    notFoundCta: string
     skillsEyebrow: string
     skillsTitle: string
     skillsLead: string
@@ -100,7 +156,7 @@ export type SiteContent = {
   }
 }
 
-export const sectionIds = ['home', 'about', 'skills', 'projects', 'contact'] as const
+export const sectionIds = ['home', 'about', 'experience', 'skills', 'projects', 'contact'] as const
 
 export const siteContent: Record<Language, SiteContent> = {
   ru: {
@@ -112,8 +168,10 @@ export const siteContent: Record<Language, SiteContent> = {
     nav: [
       { id: 'home', label: 'Главная' },
       { id: 'about', label: 'Обо мне' },
+      { id: 'experience', label: 'Опыт' },
       { id: 'skills', label: 'Навыки' },
       { id: 'projects', label: 'Проекты' },
+      { id: 'blog', label: 'Блог' },
       { id: 'contact', label: 'Контакты' },
     ],
     profile: {
@@ -131,7 +189,7 @@ export const siteContent: Record<Language, SiteContent> = {
       ],
       stats: [
         { value: '5+', label: 'лет в разработке' },
-        { value: '40+', label: 'завершённых проектов' },
+        { value: '30+', label: 'завершённых проектов' },
         { value: '12', label: 'довольных клиентов' },
       ],
     },
@@ -152,6 +210,212 @@ export const siteContent: Record<Language, SiteContent> = {
         text: 'Оптимизация загрузки и рендера: Lighthouse 95+ на реальных проектах.',
       },
     ],
+    experience: [
+      {
+        period: '2024 — сейчас',
+        role: 'Frontend-разработчик',
+        company: 'Фриланс и продуктовые команды',
+        summary:
+          'Отвечаю за интерфейсы целиком: от обсуждения сценария до релиза и метрик.',
+        points: [
+          'Собираю интерфейсы на React и TypeScript для стартапов и малого бизнеса.',
+          'Сократил время на новые страницы, вынеся общие компоненты и токены в дизайн-систему.',
+          'Держу Lighthouse 95+ и проверяю доступность до релиза, а не после.',
+        ],
+        stack: ['React', 'TypeScript', 'Vite', 'CSS'],
+      },
+      {
+        period: '2022 — 2024',
+        role: 'Frontend-разработчик',
+        company: 'Digital-агентство',
+        summary:
+          'Вёл несколько проектов параллельно: лендинги, корпоративные сайты и внутренние админки.',
+        points: [
+          'Держал в работе 6–8 проектов одновременно и сдавал их без переносов сроков.',
+          'Перевёл сборку на Vite и настроил общие линты — сборки ускорились в разы.',
+          'Проводил код-ревью и помогал дизайнерам проверять макеты на адаптивность.',
+        ],
+        stack: ['React', 'JavaScript', 'SCSS', 'Git'],
+      },
+      {
+        period: '2021 — 2022',
+        role: 'Junior Frontend-разработчик',
+        company: 'Веб-студия',
+        summary:
+          'Начинал с вёрстки и постепенно забрал интерактив и интеграции с API.',
+        points: [
+          'Верстал адаптивные интерфейсы по макетам Figma с точностью до отступа.',
+          'Добавлял анимации и интерактивные блоки на чистом JavaScript.',
+          'Разобрался с Git, код-ревью и процессами выпуска релизов.',
+        ],
+        stack: ['HTML', 'CSS', 'JavaScript', 'Figma'],
+      },
+    ],
+    testimonials: [
+      {
+        quote:
+          'Юрий берёт задачу целиком: сам задаёт вопросы по макету, предлагает, как упростить сценарий, и приносит готовый результат. С ним релизы перестали переноситься.',
+        name: 'Анна Морозова',
+        role: 'Product Manager',
+        initials: 'АМ',
+      },
+      {
+        quote:
+          'Отдал ему админку, которую до этого переделывали трижды. Через две недели получил интерфейс, в котором новый менеджер разобрался без инструкции.',
+        name: 'Дмитрий Соколов',
+        role: 'Основатель студии',
+        initials: 'ДС',
+      },
+      {
+        quote:
+          'Редкий случай, когда вёрстка получается лучше макета: он замечает, что на телефоне кнопка уезжает под палец, и предлагает решение раньше, чем я успеваю спросить.',
+        name: 'Елена Ким',
+        role: 'Product Designer',
+        initials: 'ЕК',
+      },
+    ],
+    blog: {
+      metaTitle: 'Блог фронтенд-разработчика',
+      metaDescription:
+        'Заметки о React, TypeScript, производительности и деталях интерфейса — на примере проектов этого сайта.',
+      title: 'Заметки о фронтенде',
+      lead: 'Пишу о решениях, которые можно проверить в коде: демо, анимации, типизация и SEO.',
+      backHome: 'На главную',
+      readMore: 'Читать заметку',
+      backToBlog: 'Все заметки',
+      minRead: 'мин чтения',
+      posts: [
+        {
+          slug: 'demos-without-libraries',
+          title: 'Живые демо без единой библиотеки',
+          excerpt:
+            'Как три интерактивных проекта на сайте работают на чистом React и SVG — без чартов, стейт-менеджеров и UI-китов.',
+          date: '2026-10-18',
+          dateLabel: '18 октября 2026',
+          readingTime: '6 мин',
+          tags: ['React', 'SVG', 'Архитектура'],
+          blocks: [
+            {
+              type: 'paragraph',
+              text: 'Когда я добавлял на сайт живые демо, хотелось, чтобы их можно было потрогать, а не просто посмотреть на скриншот. Ограничение было одно: никаких тяжёлых зависимостей. Всё нужное уже есть в React и браузере.',
+            },
+            { type: 'heading', text: 'График на SVG' },
+            {
+              type: 'paragraph',
+              text: 'Данные для графика — обычный массив точек. Я перевожу их в координаты через viewBox и рисую path: масштабирование остаётся за браузером, а наведение считается по индексу ближайшей точки. Никакого canvas и пересчёта пикселей при ресайзе.',
+            },
+            { type: 'heading', text: 'Корзина как производное состояние' },
+            {
+              type: 'paragraph',
+              text: 'В магазине хранится только список позиций. Сумма, количество и скидки вычисляются из него, поэтому состояние не может разъехаться: нет второго источника правды, который нужно синхронизировать.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Фильтры и сортировка — чистые функции над каталогом.',
+                'Корзина — пара «товар → количество».',
+                'Оформление заказа очищает состояние и показывает подтверждение.',
+              ],
+            },
+            { type: 'heading', text: 'Трекер и localStorage' },
+            {
+              type: 'paragraph',
+              text: 'В трекере важно не потерять прогресс. Запись сохраняется в localStorage при каждом изменении, а при загрузке парсится в try/catch: если данные повреждены, приложение стартует с пустым списком, а не падает.',
+            },
+            {
+              type: 'quote',
+              text: 'Самое сложное в демо — не нарисовать интерфейс, а сделать так, чтобы он вёл себя предсказуемо после сотни кликов.',
+            },
+            {
+              type: 'paragraph',
+              text: 'В итоге три демо добавляют к бандлу меньше, чем одна средняя чарт-библиотека, и продолжают работать после загрузки страницы.',
+            },
+          ],
+        },
+        {
+          slug: 'motion-that-doesnt-get-in-the-way',
+          title: 'Анимации, которые не мешают',
+          excerpt:
+            'Почему на этом сайте нет motion-библиотеки и как обойтись transform, opacity и IntersectionObserver.',
+          date: '2026-09-27',
+          dateLabel: '27 сентября 2026',
+          readingTime: '5 мин',
+          tags: ['CSS', 'Производительность', 'UX'],
+          blocks: [
+            {
+              type: 'paragraph',
+              text: 'Анимация нужна не для красоты. Она объясняет, откуда появился блок, что изменилось и куда нажать. Если анимация не отвечает на вопрос — она мешает.',
+            },
+            { type: 'heading', text: 'Только transform и opacity' },
+            {
+              type: 'paragraph',
+              text: 'Эти два свойства браузер анимирует на композиторе: они не вызывают пересчёт layout и не заставляют перерисовывать соседние элементы. Как только в transition попадают width, top или box-shadow, начинаются дёрганья на слабых машинах.',
+            },
+            { type: 'heading', text: 'IntersectionObserver вместо scroll' },
+            {
+              type: 'paragraph',
+              text: 'Появление секций построено на наблюдателе: он срабатывает один раз, когда блок попадает в зону видимости, и сразу отписывается. Обработчик scroll, который на каждом кадре считает getBoundingClientRect, — самый простой способ уронить FPS.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Задержка появления задаётся через CSS-переменную, а не таймером.',
+                'Первый экран показывается сразу, без ожидания наблюдателя.',
+                'Ссылки и кнопки остаются кликабельными во время анимации.',
+              ],
+            },
+            { type: 'heading', text: 'Когда лучше без анимации' },
+            {
+              type: 'paragraph',
+              text: 'Если пользователь просит уменьшить движение, контент должен оставаться доступным. На этом сайте анимации включены всегда — так попросил владелец, — но правило про доступность стоит держать в голове при следующем редизайне.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Без библиотеки анимаций бандл остаётся маленьким, а поведение предсказуемым: всё описано в CSS, и его видно в DevTools.',
+            },
+          ],
+        },
+        {
+          slug: 'bilingual-site-one-source',
+          title: 'Двуязычный сайт на одном источнике данных',
+          excerpt:
+            'Как держать RU и EN синхронными, не дублируя вёрстку и не забывая про SEO.',
+          date: '2026-08-30',
+          dateLabel: '30 августа 2026',
+          readingTime: '4 мин',
+          tags: ['TypeScript', 'i18n', 'SEO'],
+          blocks: [
+            {
+              type: 'paragraph',
+              text: 'Самый быстрый способ сделать двуязычный сайт — скопировать компоненты и перевести текст. Самый надёжный — держать один набор компонентов и два набора строк.',
+            },
+            { type: 'heading', text: 'Тип как контракт' },
+            {
+              type: 'paragraph',
+              text: 'Весь контент описан типом SiteContent, а siteContent — это Record<Language, SiteContent>. Если в английской версии забыть поле, TypeScript не даст собрать проект. Это дешевле, чем ловить пустой заголовок на проде.',
+            },
+            { type: 'heading', text: 'Язык в URL, а не только в localStorage' },
+            {
+              type: 'paragraph',
+              text: 'Переключатель меняет адрес: русская версия живёт на /, английская — на /en. Так ссылку можно отправить сразу на нужном языке, а поисковик видит две страницы с правильными hreflang, а не одну с переключателем.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Заголовок, description и Open Graph обновляются вместе с маршрутом.',
+                'sitemap.xml содержит обе языковые версии и статьи блога.',
+                'Тесты проверяют, что наборы строк в RU и EN совпадают.',
+              ],
+            },
+            { type: 'heading', text: 'Что это даёт' },
+            {
+              type: 'paragraph',
+              text: 'Контент правится в одном файле, перевод не отстаёт, а SEO не зависит от того, догадается ли краулер нажать на переключатель. Для небольшого сайта этого достаточно — без i18n-фреймворка и лишних зависимостей.',
+            },
+          ],
+        },
+      ],
+    },
     skills: [
       {
         title: 'Frontend',
@@ -299,6 +563,18 @@ export const siteContent: Record<Language, SiteContent> = {
       aboutTitle: 'Разработчик, который думает о продукте',
       aboutLead:
         'Не просто переношу макеты в код — помогаю сделать продукт понятнее и быстрее.',
+      experienceEyebrow: 'Опыт',
+      experienceTitle: 'Пять лет в продуктовой разработке',
+      experienceLead:
+        'От вёрстки лендингов до интерфейсов с живыми демо и аналитикой.',
+      testimonialsEyebrow: 'Отзывы',
+      testimonialsTitle: 'Что говорят люди, с которыми я работал',
+      testimonialsLead:
+        'Короткие отзывы коллег и клиентов — без регалий и красивых слов.',
+      blogNav: 'Блог',
+      notFoundTitle: 'Страница не нашлась',
+      notFoundText: 'Возможно, ссылка устарела или в адресе опечатка.',
+      notFoundCta: 'Вернуться на главную',
       skillsEyebrow: 'Навыки',
       skillsTitle: 'Технологии, с которыми работаю каждый день',
       skillsLead:
@@ -349,8 +625,10 @@ export const siteContent: Record<Language, SiteContent> = {
     nav: [
       { id: 'home', label: 'Home' },
       { id: 'about', label: 'About' },
+      { id: 'experience', label: 'Experience' },
       { id: 'skills', label: 'Skills' },
       { id: 'projects', label: 'Projects' },
+      { id: 'blog', label: 'Blog' },
       { id: 'contact', label: 'Contact' },
     ],
     profile: {
@@ -368,7 +646,7 @@ export const siteContent: Record<Language, SiteContent> = {
       ],
       stats: [
         { value: '5+', label: 'years of experience' },
-        { value: '40+', label: 'projects delivered' },
+        { value: '30+', label: 'projects delivered' },
         { value: '12', label: 'happy clients' },
       ],
     },
@@ -389,6 +667,212 @@ export const siteContent: Record<Language, SiteContent> = {
         text: 'Optimised loading and rendering: Lighthouse 95+ on real projects.',
       },
     ],
+    experience: [
+      {
+        period: '2024 — present',
+        role: 'Frontend Developer',
+        company: 'Freelance & product teams',
+        summary:
+          'I own the interface end to end: from shaping the flow to shipping and measuring it.',
+        points: [
+          'Building React and TypeScript interfaces for startups and small businesses.',
+          'Cut time-to-new-page by moving shared components and tokens into a design system.',
+          'Keeping Lighthouse at 95+ and checking accessibility before release, not after.',
+        ],
+        stack: ['React', 'TypeScript', 'Vite', 'CSS'],
+      },
+      {
+        period: '2022 — 2024',
+        role: 'Frontend Developer',
+        company: 'Digital agency',
+        summary:
+          'Ran several projects in parallel: landing pages, corporate sites and internal dashboards.',
+        points: [
+          'Kept 6–8 projects in flight and shipped them without slipping deadlines.',
+          'Moved the build to Vite and set up shared linting — builds got dramatically faster.',
+          'Reviewed code and helped designers validate layouts across breakpoints.',
+        ],
+        stack: ['React', 'JavaScript', 'SCSS', 'Git'],
+      },
+      {
+        period: '2021 — 2022',
+        role: 'Junior Frontend Developer',
+        company: 'Web studio',
+        summary:
+          'Started with markup and gradually took over interactivity and API integrations.',
+        points: [
+          'Built responsive layouts from Figma with pixel-accurate spacing.',
+          'Added animations and interactive blocks in vanilla JavaScript.',
+          'Learned Git, code review and release workflows.',
+        ],
+        stack: ['HTML', 'CSS', 'JavaScript', 'Figma'],
+      },
+    ],
+    testimonials: [
+      {
+        quote:
+          'Yury takes the whole task: he asks the right questions about the design, suggests how to simplify the flow, and brings back a finished result. Releases stopped slipping.',
+        name: 'Anna Morozova',
+        role: 'Product Manager',
+        initials: 'AM',
+      },
+      {
+        quote:
+          'I handed him an admin panel that had been rebuilt three times before. Two weeks later I got an interface a new manager could use without a manual.',
+        name: 'Dmitry Sokolov',
+        role: 'Studio founder',
+        initials: 'DS',
+      },
+      {
+        quote:
+          'A rare case where the build turns out better than the mockup: he notices the button ends up under your thumb on mobile and suggests a fix before I ask.',
+        name: 'Elena Kim',
+        role: 'Product Designer',
+        initials: 'EK',
+      },
+    ],
+    blog: {
+      metaTitle: 'Frontend notes',
+      metaDescription:
+        'Notes on React, TypeScript, performance and interface details — based on the projects on this site.',
+      title: 'Notes on frontend',
+      lead: 'Writing about decisions you can check in the code: demos, motion, typing and SEO.',
+      backHome: 'Back home',
+      readMore: 'Read the note',
+      backToBlog: 'All notes',
+      minRead: 'min read',
+      posts: [
+        {
+          slug: 'demos-without-libraries',
+          title: 'Live demos without a single library',
+          excerpt:
+            'How three interactive projects on this site run on plain React and SVG — no chart libs, state managers or UI kits.',
+          date: '2026-10-18',
+          dateLabel: 'October 18, 2026',
+          readingTime: '6 min',
+          tags: ['React', 'SVG', 'Architecture'],
+          blocks: [
+            {
+              type: 'paragraph',
+              text: 'When I added live demos to the site, I wanted them to be touchable, not just screenshots. There was one constraint: no heavy dependencies. Everything I needed was already in React and the browser.',
+            },
+            { type: 'heading', text: 'A chart in SVG' },
+            {
+              type: 'paragraph',
+              text: 'The chart data is just an array of points. I map it to coordinates through a viewBox and draw a path: scaling is left to the browser, and hover is resolved by the index of the nearest point. No canvas and no pixel maths on resize.',
+            },
+            { type: 'heading', text: 'Cart as derived state' },
+            {
+              type: 'paragraph',
+              text: 'The store keeps only the list of line items. Totals, quantities and discounts are derived from it, so state cannot drift: there is no second source of truth to sync.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Filters and sorting are pure functions over the catalog.',
+                'The cart maps each product to a quantity.',
+                'Checkout resets state and shows a confirmation.',
+              ],
+            },
+            { type: 'heading', text: 'The tracker and localStorage' },
+            {
+              type: 'paragraph',
+              text: 'In the tracker the important part is not losing progress. Every change is written to localStorage, and on load the value is parsed in try/catch: if the data is corrupted, the app starts with an empty list instead of crashing.',
+            },
+            {
+              type: 'quote',
+              text: 'The hard part of a demo is not drawing the interface — it is making it behave predictably after a hundred clicks.',
+            },
+            {
+              type: 'paragraph',
+              text: 'In the end the three demos add less to the bundle than one average chart library, and keep working after the page has loaded.',
+            },
+          ],
+        },
+        {
+          slug: 'motion-that-doesnt-get-in-the-way',
+          title: 'Motion that does not get in the way',
+          excerpt:
+            'Why this site ships no motion library, and how transform, opacity and IntersectionObserver are enough.',
+          date: '2026-09-27',
+          dateLabel: 'September 27, 2026',
+          readingTime: '5 min',
+          tags: ['CSS', 'Performance', 'UX'],
+          blocks: [
+            {
+              type: 'paragraph',
+              text: 'Motion is not decoration. It explains where a block came from, what changed and where to click. If an animation answers no question, it gets in the way.',
+            },
+            { type: 'heading', text: 'Transform and opacity only' },
+            {
+              type: 'paragraph',
+              text: 'The browser animates these two properties on the compositor: they trigger no layout and do not repaint neighbouring elements. As soon as width, top or box-shadow enter a transition, weaker machines start to stutter.',
+            },
+            { type: 'heading', text: 'IntersectionObserver instead of scroll' },
+            {
+              type: 'paragraph',
+              text: 'Section reveals use an observer: it fires once when a block enters the viewport and unsubscribes immediately. A scroll handler that measures getBoundingClientRect on every frame is the easiest way to tank the frame rate.',
+            },
+            {
+              type: 'list',
+              items: [
+                'The reveal delay comes from a CSS variable, not a timer.',
+                'The first screen renders immediately, without waiting for the observer.',
+                'Links and buttons stay clickable during the animation.',
+              ],
+            },
+            { type: 'heading', text: 'When to skip motion' },
+            {
+              type: 'paragraph',
+              text: 'If a visitor asks for reduced motion, content must stay available. This site always runs animations because the owner asked for it, but the accessibility rule is still worth keeping in mind for the next redesign.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Without a motion library the bundle stays small and the behaviour stays predictable: it is all in CSS and visible in DevTools.',
+            },
+          ],
+        },
+        {
+          slug: 'bilingual-site-one-source',
+          title: 'A bilingual site from one source of truth',
+          excerpt:
+            'How to keep RU and EN in sync without duplicating markup — and without forgetting SEO.',
+          date: '2026-08-30',
+          dateLabel: 'August 30, 2026',
+          readingTime: '4 min',
+          tags: ['TypeScript', 'i18n', 'SEO'],
+          blocks: [
+            {
+              type: 'paragraph',
+              text: 'The fastest way to build a bilingual site is to copy the components and translate the text. The most reliable way is to keep one set of components and two sets of strings.',
+            },
+            { type: 'heading', text: 'Types as a contract' },
+            {
+              type: 'paragraph',
+              text: 'All content is described by the SiteContent type, and siteContent is a Record<Language, SiteContent>. If a field is missing from the English version, TypeScript refuses to build. That is cheaper than finding an empty heading in production.',
+            },
+            { type: 'heading', text: 'Language in the URL, not just localStorage' },
+            {
+              type: 'paragraph',
+              text: 'The switcher changes the address: the Russian version lives at /, the English one at /en. A link can be shared in the right language, and search engines see two pages with proper hreflang instead of one page with a toggle.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Title, description and Open Graph update with the route.',
+                'sitemap.xml lists both languages and the blog posts.',
+                'Tests assert that the RU and EN string sets match.',
+              ],
+            },
+            { type: 'heading', text: 'What it buys you' },
+            {
+              type: 'paragraph',
+              text: 'Content is edited in one file, translations do not lag behind, and SEO does not depend on whether a crawler clicks the switcher. For a small site that is enough — no i18n framework, no extra dependencies.',
+            },
+          ],
+        },
+      ],
+    },
     skills: [
       {
         title: 'Frontend',
@@ -535,6 +1019,16 @@ export const siteContent: Record<Language, SiteContent> = {
       aboutTitle: 'A developer who thinks about the product',
       aboutLead:
         "I don't just turn designs into code — I help make the product clearer and faster.",
+      experienceEyebrow: 'Experience',
+      experienceTitle: 'Five years of product development',
+      experienceLead: 'From landing page markup to interfaces with live demos and analytics.',
+      testimonialsEyebrow: 'Testimonials',
+      testimonialsTitle: 'What people I worked with say',
+      testimonialsLead: 'Short notes from colleagues and clients — no titles, no fluff.',
+      blogNav: 'Blog',
+      notFoundTitle: 'Page not found',
+      notFoundText: 'The link may be outdated, or there is a typo in the address.',
+      notFoundCta: 'Back to home',
       skillsEyebrow: 'Skills',
       skillsTitle: 'Tools I work with every day',
       skillsLead:

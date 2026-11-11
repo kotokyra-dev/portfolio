@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /** Возвращает id секции, которая сейчас находится в центре экрана. */
-export function useScrollSpy(ids: readonly string[], offset = 96) {
+export function useScrollSpy(ids: readonly string[], offset = 96, key?: string) {
   const [active, setActive] = useState(ids[0] ?? '')
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function useScrollSpy(ids: readonly string[], offset = 96) {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
     }
-  }, [ids, offset])
+  }, [ids, offset, key])
 
   return active
 }

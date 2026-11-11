@@ -1,0 +1,31 @@
+{
+  "name": "Yury Katok — Frontend Developer",
+  "short_name": "Yury Katok",
+  "description": "Портфолио фронтенд-разработчика: React, TypeScript, быстрые и доступные интерфейсы.",
+  "lang": "ru",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f6fa",
+  "theme_color": "#5b4bf5",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

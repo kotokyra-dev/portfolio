@@ -3,6 +3,7 @@ import { sectionIds } from '../content'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import type { Theme } from '../hooks/useTheme'
 import { useLanguage } from '../i18n/context'
+import { buildPath, useRoute } from '../router'
 import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './icons'
 
 type HeaderProps = {
@@ -13,9 +14,19 @@ type HeaderProps = {
 export function Header({ theme, onToggleTheme }: HeaderProps) {
   const { language, content, setLanguage } = useLanguage()
   const { nav, profile, ui } = content
+  const { route } = useRoute()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const active = useScrollSpy(sectionIds)
+  const active = useScrollSpy(sectionIds, 96, route.name)
+
+  const homePath = buildPath(language, '/')
+  const blogPath = buildPath(language, '/blog')
+  const current =
+    route.name === 'home'
+      ? active
+      : route.name === 'blog' || route.name === 'post'
+        ? 'blog'
+        : ''
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -36,7 +47,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container header__inner">
-        <a className="brand" href="#home" aria-label={profile.name}>
+        <a className="brand" href={homePath} aria-label={profile.name}>
           <span className="brand__mark">{profile.initials}</span>
           <span className="brand__name">{profile.name}</span>
         </a>
@@ -47,18 +58,27 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
           aria-label={ui.navLabel}
         >
           <ul className="nav__list">
-            {nav.map((link) => (
-              <li key={link.id}>
-                <a
-                  className={`nav__link ${active === link.id ? 'is-active' : ''}`}
-                  href={`#${link.id}`}
-                  aria-current={active === link.id ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {nav.map((link) => {
+              const href =
+                link.id === 'blog'
+                  ? blogPath
+                  : link.id === 'home'
+                    ? homePath
+                    : `${homePath}#${link.id}`
+
+              return (
+                <li key={link.id}>
+                  <a
+                    className={`nav__link ${current === link.id ? 'is-active' : ''}`}
+                    href={href}
+                    aria-current={current === link.id ? 'page' : undefined}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </nav>
 
@@ -91,7 +111,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
 
-          <a className="btn btn--primary btn--sm header__cta" href="#contact">
+          <a className="btn btn--primary btn--sm header__cta" href={`${homePath}#contact`}>
             {ui.contactCta}
           </a>
 
