@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import type { DemoId } from '../content'
+import type { DemoId, ProjectCase } from '../content'
 import { DemoModal } from '../demos/DemoModal'
 import { useLanguage } from '../i18n/context'
-import { ArrowUpRightIcon, PlayIcon } from './icons'
+import { CaseModal } from './CaseModal'
+import { ArrowUpRightIcon, CaseIcon, PlayIcon } from './icons'
 import { Reveal } from './Reveal'
 
 function Preview({ demo }: { demo: DemoId | null }) {
@@ -92,6 +93,7 @@ export function Projects() {
   const { content } = useLanguage()
   const { projects, ui } = content
   const [demo, setDemo] = useState<DemoId | null>(null)
+  const [caseStudy, setCaseStudy] = useState<{ title: string; data: ProjectCase } | null>(null)
 
   return (
     <section id="projects" className="section projects">
@@ -133,6 +135,14 @@ export function Projects() {
                   </ul>
 
                   <div className="project__links">
+                    <button
+                      type="button"
+                      className="link link--button"
+                      onClick={() => setCaseStudy({ title: project.title, data: project.case })}
+                    >
+                      {ui.caseCta}
+                      <CaseIcon />
+                    </button>
                     {demoId ? (
                       <button
                         type="button"
@@ -171,6 +181,13 @@ export function Projects() {
       </div>
 
       {demo && <DemoModal demo={demo} onClose={() => setDemo(null)} />}
+      {caseStudy && (
+        <CaseModal
+          title={caseStudy.title}
+          data={caseStudy.data}
+          onClose={() => setCaseStudy(null)}
+        />
+      )}
     </section>
   )
 }

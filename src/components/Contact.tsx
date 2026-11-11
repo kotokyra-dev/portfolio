@@ -1,4 +1,5 @@
 import { useLanguage } from '../i18n/context'
+import { ContactForm } from './ContactForm'
 import { socialIcons } from './iconMaps'
 import { ArrowUpRightIcon, MailIcon } from './icons'
 import { Reveal } from './Reveal'
@@ -14,6 +15,10 @@ export function Contact() {
           <span className="eyebrow">{ui.contactEyebrow}</span>
           <h2 className="contact__title">{ui.contactTitle}</h2>
           <p className="contact__lead">{ui.contactLead}</p>
+
+          <ContactForm />
+
+          <p className="contact__or">{ui.formOr}</p>
 
           <div className="contact__actions">
             <a className="btn btn--primary" href={`mailto:${profile.email}`}>

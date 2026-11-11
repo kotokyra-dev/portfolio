@@ -67,6 +67,15 @@ export function ArrowUpIcon(props: IconProps) {
   )
 }
 
+export function CaseIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" {...stroke} aria-hidden="true" {...props}>
+      <path d="M6 3.5h8.5L19 8v12.5H6V3.5Z" />
+      <path d="M14 3.5V8h5M9 12h7M9 15.5h7" />
+    </svg>
+  )
+}
+
 export function PlayIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" width="16" height="16" {...stroke} aria-hidden="true" {...props}>

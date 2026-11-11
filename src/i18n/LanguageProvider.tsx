@@ -20,9 +20,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     document.documentElement.lang = language
     document.title = content.meta.title
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', content.meta.description)
+
+    const setMeta = (selector: string, value: string) => {
+      document.querySelector(selector)?.setAttribute('content', value)
+    }
+
+    setMeta('meta[name="description"]', content.meta.description)
+    setMeta('meta[property="og:title"]', content.meta.title)
+    setMeta('meta[property="og:description"]', content.meta.description)
+    setMeta('meta[property="og:locale"]', language === 'ru' ? 'ru_RU' : 'en_US')
+    setMeta('meta[name="twitter:title"]', content.meta.title)
+    setMeta('meta[name="twitter:description"]', content.meta.description)
 
     try {
       localStorage.setItem('lang', language)

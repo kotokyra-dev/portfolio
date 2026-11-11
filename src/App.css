@@ -1051,6 +1051,94 @@
   cursor: pointer;
 }
 
+/* ---------- Кейс проекта ---------- */
+
+.case-window {
+  width: min(720px, 100%);
+}
+
+.case-body {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.case-metric {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--chip-bg);
+  text-align: center;
+}
+
+.case-metric__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.case-metric__label {
+  display: block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.case-block__title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.case-block__text {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.case-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.case-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.case-list li::before {
+  content: '';
+  position: absolute;
+  top: 0.55em;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.case-block--result {
+  padding: 18px 20px;
+  border: 1px solid var(--accent-border);
+  border-radius: 16px;
+  background: var(--accent-soft);
+}
+
 /* =========================================================
    Контакты
    ========================================================= */
@@ -1119,6 +1207,143 @@
   justify-content: center;
   gap: 12px;
   margin-top: 32px;
+}
+
+.contact__or {
+  position: relative;
+  margin-top: 30px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-form {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  max-width: 620px;
+  margin: 30px auto 0;
+  text-align: left;
+}
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-field {
+  display: grid;
+  gap: 7px;
+}
+
+.contact-field__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.contact-field__input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--bg-elev);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-field__input::placeholder {
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+.contact-field__input:focus {
+  outline: none;
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.contact-field__input[aria-invalid='true'] {
+  border-color: #e5484d;
+}
+
+.contact-field__input--area {
+  resize: vertical;
+  min-height: 118px;
+}
+
+.contact-field__error {
+  font-size: 12.5px;
+  color: #e5484d;
+}
+
+.contact-form__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-form__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.contact-form__foot .btn {
+  margin: 0;
+}
+
+.contact-form__privacy {
+  max-width: 34ch;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.contact-form__error {
+  font-size: 14px;
+  color: #e5484d;
+}
+
+.contact-form__error a {
+  text-decoration: underline;
+}
+
+.contact-form--done {
+  justify-items: center;
+  padding: 26px;
+  border: 1px solid var(--accent-border);
+  border-radius: 18px;
+  background: var(--accent-soft);
+  text-align: center;
+}
+
+.contact-form__check {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.contact-form__done-text {
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 .socials {
@@ -1316,6 +1541,23 @@
 @media (max-width: 640px) {
   .brand__name {
     display: none;
+  }
+
+  .contact-form__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .case-metric {
+    padding: 12px 8px;
+  }
+
+  .case-metric__value {
+    font-size: 19px;
   }
 
   .skills__grid {
