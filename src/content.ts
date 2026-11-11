@@ -161,9 +161,9 @@ export const sectionIds = ['home', 'about', 'experience', 'skills', 'projects', 
 export const siteContent: Record<Language, SiteContent> = {
   ru: {
     meta: {
-      title: 'Yury Katok — Frontend-разработчик',
+      title: 'Yury Kotok — Frontend-разработчик',
       description:
-        'Yury Katok — frontend-разработчик. Создаю быстрые, доступные и аккуратные интерфейсы на React и TypeScript.',
+        'Yury Kotok — frontend-разработчик. Создаю быстрые, доступные и аккуратные интерфейсы на React и TypeScript.',
     },
     nav: [
       { id: 'home', label: 'Главная' },
@@ -175,7 +175,7 @@ export const siteContent: Record<Language, SiteContent> = {
       { id: 'contact', label: 'Контакты' },
     ],
     profile: {
-      name: 'Yury Katok',
+      name: 'Yury Kotok',
       shortName: 'Юрий',
       initials: 'YK',
       role: 'Frontend-разработчик',
@@ -645,9 +645,9 @@ export const siteContent: Record<Language, SiteContent> = {
   },
   en: {
     meta: {
-      title: 'Yury Katok — Frontend Developer',
+      title: 'Yury Kotok — Frontend Developer',
       description:
-        'Yury Katok — frontend developer building fast, accessible and polished interfaces with React and TypeScript.',
+        'Yury Kotok — frontend developer building fast, accessible and polished interfaces with React and TypeScript.',
     },
     nav: [
       { id: 'home', label: 'Home' },
@@ -659,7 +659,7 @@ export const siteContent: Record<Language, SiteContent> = {
       { id: 'contact', label: 'Contact' },
     ],
     profile: {
-      name: 'Yury Katok',
+      name: 'Yury Kotok',
       shortName: 'Yury',
       initials: 'YK',
       role: 'Frontend Developer',
