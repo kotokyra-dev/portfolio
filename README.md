@@ -37,6 +37,16 @@ npm run test     # тесты (Vitest)
 такую отправку только на адрес владельца аккаунта. Пока ключ не задан, форма
 показывает ошибку и предлагает написать на почту напрямую.
 
+### Как получить ключ Resend
+
+1. Зарегистрируйся на [resend.com](https://resend.com) (бесплатный тариф — 3000 писем в месяц).
+2. Открой **API Keys → Create API Key**, выбери право **Sending access** и скопируй ключ (`re_...`). Он показывается один раз.
+3. Без своего домена оставь отправителя `Portfolio <onboarding@resend.dev>`, а в `CONTACT_TO_EMAIL` укажи почту, на которую зарегистрирован Resend.
+4. Если есть домен: **Domains → Add Domain**, добавь DNS-записи (SPF, DKIM, DMARC) и дождись статуса Verified. Затем используй отправителя вида `Portfolio <hi@your-domain.ru>`.
+5. В Vercel открой **Project → Settings → Environment Variables** и добавь `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` для Production (и Preview, если нужно).
+6. Нажми **Redeploy** у последнего деплоя или сделай любой пуш — переменные подхватятся функцией.
+7. Отправь тестовое сообщение с сайта. Ответ `200 {"ok":true}` — письмо ушло; `503 not_configured` — не задан ключ; `502 delivery_failed` — смотри логи функции и Resend → Emails.
+
 В `npm run dev` серверной функции нет: локально форма тоже покажет fallback на почту.
 Проверить отправку можно командой `npx vercel dev` или уже на задеплоенном сайте.
 
