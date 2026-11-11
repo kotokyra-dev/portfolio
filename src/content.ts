@@ -171,7 +171,7 @@ export const siteContent: Record<Language, SiteContent> = {
       },
     ],
     socials: [
-      { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
+      { label: 'GitHub', href: 'https://github.com/kotokyra-dev', icon: 'github' },
       { label: 'Telegram', href: 'https://t.me/ktk314', icon: 'telegram' },
     ],
     ui: {
@@ -315,7 +315,7 @@ export const siteContent: Record<Language, SiteContent> = {
       },
     ],
     socials: [
-      { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
+      { label: 'GitHub', href: 'https://github.com/kotokyra-dev', icon: 'github' },
       { label: 'Telegram', href: 'https://t.me/ktk314', icon: 'telegram' },
     ],
     ui: {
