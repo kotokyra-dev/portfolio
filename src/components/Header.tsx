@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { sectionIds } from '../content'
-import { useMotion } from '../hooks/useMotion'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import type { Theme } from '../hooks/useTheme'
 import { useLanguage } from '../i18n/context'
-import { CloseIcon, MenuIcon, MoonIcon, SparkIcon, SunIcon } from './icons'
+import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './icons'
 
 type HeaderProps = {
   theme: Theme
@@ -17,7 +16,6 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const active = useScrollSpy(sectionIds)
-  const { systemReduced, motionEnabled, toggleMotion } = useMotion()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -83,19 +81,6 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
               EN
             </button>
           </div>
-
-          {systemReduced && (
-            <button
-              type="button"
-              className={`icon-btn motion-btn ${motionEnabled ? 'is-active' : ''}`}
-              onClick={toggleMotion}
-              aria-pressed={motionEnabled}
-              aria-label={motionEnabled ? ui.motionOff : ui.motionOn}
-              title={motionEnabled ? ui.motionOff : ui.motionOn}
-            >
-              <SparkIcon />
-            </button>
-          )}
 
           <button
             type="button"

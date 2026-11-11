@@ -39,8 +39,6 @@ export type SiteContent = {
     languageLabel: string
     themeToLight: string
     themeToDark: string
-    motionOn: string
-    motionOff: string
     menuOpen: string
     menuClose: string
     navLabel: string
@@ -192,8 +190,6 @@ export const siteContent: Record<Language, SiteContent> = {
       languageLabel: 'Язык',
       themeToLight: 'Включить светлую тему',
       themeToDark: 'Включить тёмную тему',
-      motionOn: 'Включить анимации',
-      motionOff: 'Отключить анимации',
       menuOpen: 'Открыть меню',
       menuClose: 'Закрыть меню',
       navLabel: 'Основная навигация',
@@ -346,8 +342,6 @@ export const siteContent: Record<Language, SiteContent> = {
       languageLabel: 'Language',
       themeToLight: 'Switch to light theme',
       themeToDark: 'Switch to dark theme',
-      motionOn: 'Enable animations',
-      motionOff: 'Disable animations',
       menuOpen: 'Open menu',
       menuClose: 'Close menu',
       navLabel: 'Main navigation',
