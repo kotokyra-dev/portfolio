@@ -145,6 +145,8 @@ export type SiteContent = {
     formSending: string
     formSuccess: string
     formError: string
+  formFallback: string
+  formFallbackHint: string
     formPrivacy: string
     formRequired: string
     formEmailInvalid: string
@@ -633,6 +635,8 @@ export const siteContent: Record<Language, SiteContent> = {
       formSending: 'Отправляю…',
       formSuccess: 'Сообщение отправлено. Отвечу в течение рабочего дня.',
       formError: 'Не получилось отправить. Напишите на почту — ссылка ниже.',
+      formFallback: 'Отправить в Telegram',
+      formFallbackHint: 'Откроется чат с готовым текстом сообщения — останется нажать «Отправить».',
       formPrivacy: 'Отправляя форму, вы соглашаетесь на обработку данных для ответа.',
       formRequired: 'Заполните это поле',
       formEmailInvalid: 'Проверьте адрес почты',
@@ -1114,6 +1118,8 @@ export const siteContent: Record<Language, SiteContent> = {
       formSending: 'Sending…',
       formSuccess: 'Message sent. I will reply within one business day.',
       formError: 'Could not send. Email me instead — the link is below.',
+      formFallback: 'Send via Telegram',
+      formFallbackHint: 'Opens a chat with the message ready to go — just press Send.',
       formPrivacy: 'By submitting this form you agree to your data being used to reply.',
       formRequired: 'Please fill in this field',
       formEmailInvalid: 'Check the email address',

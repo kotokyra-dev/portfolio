@@ -49,6 +49,18 @@ export function ContactForm() {
     }
   }
 
+  // Запасной путь: если сервер недоступен — открываем чат в Telegram с готовым текстом.
+  const telegramFallback = () => {
+    const text = [
+      language === 'en' ? 'Hi Yury!' : 'Привет, Юрий!',
+      language === 'en' ? `My name is ${values.name}.` : `Меня зовут ${values.name}.`,
+      language === 'en' ? `My email: ${values.email}` : `Мой email: ${values.email}`,
+      '',
+      values.message,
+    ].join('\n')
+    return `${profile.telegram}?text=${encodeURIComponent(text)}`
+  }
+
   if (status === 'success') {
     return (
       <div className="contact-form contact-form--done" role="status">
@@ -149,10 +161,16 @@ export function ContactForm() {
       </div>
 
       {status === 'error' && (
-        <p className="contact-form__error" role="alert">
-          {ui.formError}{' '}
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        </p>
+        <div className="contact-form__error" role="alert">
+          <p>
+            {ui.formError}{' '}
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </p>
+          <a className="btn btn--ghost btn--sm" href={telegramFallback()}>
+            {ui.formFallback}
+          </a>
+          <p className="contact-form__privacy">{ui.formFallbackHint}</p>
+        </div>
       )}
     </form>
   )
