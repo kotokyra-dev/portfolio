@@ -48,8 +48,8 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container header__inner">
-        <a className="brand" href={homePath} aria-label={profile.name}>
-          <span className="brand__mark">{profile.initials}</span>
+        <a className="brand" href={homePath} aria-label={`${profile.initials} ${profile.name}`}>
+          <span className="brand__mark" aria-hidden="true">{profile.initials}</span>
           <span className="brand__name">{profile.name}</span>
         </a>
 
