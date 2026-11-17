@@ -552,6 +552,8 @@
 }
 
 .marquee__item {
+  --pull: 0px;
+  --glow: 0;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -560,12 +562,19 @@
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--muted);
+  color: color-mix(in oklab, var(--muted), var(--text) calc(var(--glow) * 100%));
+  transform: translateX(var(--pull)) scale(calc(1 + var(--glow) * 0.05));
+  transform-origin: center;
+  transition: color 0.2s ease;
+  will-change: transform;
 }
 
 .marquee__star {
+  display: inline-block;
   font-size: 11px;
-  color: var(--accent);
+  color: color-mix(in oklab, var(--accent), var(--text) calc(var(--glow) * 45%));
+  transform: rotate(calc(var(--glow) * 90deg)) scale(calc(1 + var(--glow) * 0.5));
+  transition: color 0.2s ease;
 }
 
 .marquee__clone {
@@ -1953,6 +1962,13 @@
 @media (max-width: 640px) {
   .brand__name {
     display: none;
+  }
+
+  /* На телефоне сначала оффер, потом декоративная карточка кода. */
+  .hero__visual {
+    order: 0;
+    min-height: 0;
+    margin-top: 8px;
   }
 
   .contact-form__row {

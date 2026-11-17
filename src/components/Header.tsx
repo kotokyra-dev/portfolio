@@ -3,6 +3,7 @@ import { sectionIds } from '../content'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import type { Theme } from '../hooks/useTheme'
 import { useLanguage } from '../i18n/context'
+import { trackEvent } from '../lib/analytics'
 import { buildPath, useRoute } from '../router'
 import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './icons'
 
@@ -87,7 +88,10 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             <button
               type="button"
               className={language === 'ru' ? 'is-active' : ''}
-              onClick={() => setLanguage('ru')}
+              onClick={() => {
+                setLanguage('ru')
+                trackEvent('language_change', { language: 'ru' })
+              }}
               aria-pressed={language === 'ru'}
             >
               RU
@@ -95,7 +99,10 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             <button
               type="button"
               className={language === 'en' ? 'is-active' : ''}
-              onClick={() => setLanguage('en')}
+              onClick={() => {
+                setLanguage('en')
+                trackEvent('language_change', { language: 'en' })
+              }}
               aria-pressed={language === 'en'}
             >
               EN
@@ -111,7 +118,11 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
 
-          <a className="btn btn--primary btn--sm header__cta" href={`${homePath}#contact`}>
+          <a
+            className="btn btn--primary btn--sm header__cta"
+            href={`${homePath}#contact`}
+            onClick={() => trackEvent('cta_click', { place: 'header', target: 'contact' })}
+          >
             {ui.contactCta}
           </a>
 

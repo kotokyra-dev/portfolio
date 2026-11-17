@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { DemoId, ProjectCase } from '../content'
 import { DemoModal } from '../demos/DemoModal'
 import { useLanguage } from '../i18n/context'
+import { trackEvent } from '../lib/analytics'
 import { CaseModal } from './CaseModal'
 import { ArrowUpRightIcon, CaseIcon, PlayIcon } from './icons'
 import { Reveal } from './Reveal'
@@ -138,7 +139,10 @@ export function Projects() {
                     <button
                       type="button"
                       className="link link--button"
-                      onClick={() => setCaseStudy({ title: project.title, data: project.case })}
+                      onClick={() => {
+                        trackEvent('case_open', { project: project.title })
+                        setCaseStudy({ title: project.title, data: project.case })
+                      }}
                     >
                       {ui.caseCta}
                       <CaseIcon />
@@ -147,7 +151,10 @@ export function Projects() {
                       <button
                         type="button"
                         className="link link--button"
-                        onClick={() => setDemo(demoId)}
+                        onClick={() => {
+                          trackEvent('demo_open', { project: project.title })
+                          setDemo(demoId)
+                        }}
                       >
                         {ui.demo}
                         <PlayIcon />
@@ -158,6 +165,7 @@ export function Projects() {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noreferrer"
+                        onClick={() => trackEvent('demo_link', { project: project.title })}
                       >
                         {ui.demo}
                         <ArrowUpRightIcon />
@@ -168,6 +176,7 @@ export function Projects() {
                       href={project.codeUrl}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => trackEvent('code_link', { project: project.title })}
                     >
                       {ui.code}
                       <ArrowUpRightIcon />

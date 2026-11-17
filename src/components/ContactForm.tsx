@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { useLanguage } from '../i18n/context'
+import { trackEvent } from '../lib/analytics'
 import { validateContact, type ContactErrors, type ContactValues } from '../lib/validate'
 import { ArrowUpRightIcon, MailIcon } from './icons'
 
@@ -42,6 +43,8 @@ export function ContactForm() {
         body: JSON.stringify({ ...values, company, locale: language }),
       })
       if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+      const data = await response.json().catch(() => null)
+      trackEvent('contact_submit', { via: data?.via ?? 'unknown', locale: language })
       setStatus('success')
       setValues(emptyValues)
     } catch {
@@ -166,7 +169,7 @@ export function ContactForm() {
             {ui.formError}{' '}
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
           </p>
-          <a className="btn btn--ghost btn--sm" href={telegramFallback()}>
+          <a className="btn btn--ghost btn--sm" href={telegramFallback()} onClick={() => trackEvent('telegram_click', { place: 'form_fallback' })}>
             {ui.formFallback}
           </a>
           <p className="contact-form__privacy">{ui.formFallbackHint}</p>

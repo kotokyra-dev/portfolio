@@ -163,4 +163,22 @@ svg {
   html {
     scroll-behavior: auto;
   }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .marquee__clone {
+    display: none;
+  }
+
+  .marquee__item {
+    transform: none;
+  }
 }

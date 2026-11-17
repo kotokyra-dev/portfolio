@@ -72,7 +72,14 @@ Open Graph и hreflang обновляются в `src/hooks/usePageMeta.ts`.
 - `public/og-image.png` — картинка 1200×630 для превью ссылки.
 - `public/robots.txt` и `public/sitemap.xml` — обе языковые версии и все статьи.
 - `public/manifest.webmanifest` и `public/icons/*` — установка сайта как PWA.
+- `public/llms.txt` — краткое описание сайта для ИИ-поисковиков.
 - `@vercel/analytics` — просмотры и источники (включается в настройках проекта Vercel).
+- События аналитики: `contact_submit`, `telegram_click`, `case_open`, `demo_open`,
+  `demo_link`, `code_link`, `cta_click`, `language_change` — отправляются из
+  `src/lib/analytics.ts`. Смотреть в Vercel → Project → Analytics → Events.
+- `npm run indexnow` — отправляет все URL из `sitemap.xml` в IndexNow
+  (Bing, Яндекс и другие поисковики). Запускать после деплоя, когда менялись
+  страницы. Ключ лежит в `public/<key>.txt` и в `scripts/indexnow.mjs`.
 
 ## Что где менять
 
@@ -109,7 +116,8 @@ src/
 ├── router.test.ts       # тесты разбора и сборки путей
 ├── lib/
 │   ├── validate.ts      # валидация формы
-│   └── validate.test.ts # тесты валидации
+│   ├── validate.test.ts # тесты валидации
+│   └── analytics.ts     # события Vercel Analytics
 ├── hooks/
 │   ├── useTheme.ts      # переключение светлой/тёмной темы
 │   ├── usePageMeta.ts   # title, canonical, OG и hreflang

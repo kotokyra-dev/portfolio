@@ -1,4 +1,5 @@
 import { useLanguage } from '../i18n/context'
+import { trackEvent } from '../lib/analytics'
 import { ContactForm } from './ContactForm'
 import { socialIcons } from './iconMaps'
 import { ArrowUpRightIcon, MailIcon } from './icons'
@@ -30,6 +31,7 @@ export function Contact() {
               href={profile.telegram}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent('telegram_click', { place: 'contact' })}
             >
               {ui.telegramCta}
               <ArrowUpRightIcon />
