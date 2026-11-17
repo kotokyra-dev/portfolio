@@ -3,6 +3,7 @@ import type { Language } from './content'
 
 export type Route =
   | { name: 'home' }
+  | { name: 'bot' }
   | { name: 'blog' }
   | { name: 'post'; slug: string }
   | { name: 'notFound' }
@@ -20,6 +21,7 @@ export function parsePath(pathname: string): { language: Language; route: Route 
   }
 
   if (path === '' || path === '/') return { language, route: { name: 'home' } }
+  if (path === '/bot') return { language, route: { name: 'bot' } }
   if (path === '/blog') return { language, route: { name: 'blog' } }
 
   const post = /^\/blog\/([\w-]+)$/.exec(path)

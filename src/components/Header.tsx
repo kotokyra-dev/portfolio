@@ -22,12 +22,15 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
 
   const homePath = buildPath(language, '/')
   const blogPath = buildPath(language, '/blog')
+  const botPath = buildPath(language, '/bot')
   const current =
     route.name === 'home'
       ? active
       : route.name === 'blog' || route.name === 'post'
         ? 'blog'
-        : ''
+        : route.name === 'bot'
+          ? 'bot'
+          : ''
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -63,9 +66,11 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
               const href =
                 link.id === 'blog'
                   ? blogPath
-                  : link.id === 'home'
-                    ? homePath
-                    : `${homePath}#${link.id}`
+                  : link.id === 'bot'
+                    ? botPath
+                    : link.id === 'home'
+                      ? homePath
+                      : `${homePath}#${link.id}`
 
               return (
                 <li key={link.id}>

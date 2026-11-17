@@ -32,5 +32,7 @@
 
 - https://kotok.site/ — главная (RU)
 - https://kotok.site/en/ — главная (EN)
+- https://kotok.site/bot — NeuroHelper: описание, возможности, тарифы и FAQ
+- https://kotok.site/en/bot — NeuroHelper page (EN)
 - https://kotok.site/blog — блог
 - https://kotok.site/sitemap.xml — карта сайта

@@ -32,7 +32,11 @@ export function usePageMeta(language: Language, route: Route) {
     let path = '/'
     let type = 'website'
 
-    if (route.name === 'blog') {
+    if (route.name === 'bot') {
+      title = content.bot.metaTitle
+      description = content.bot.metaDescription
+      path = '/bot'
+    } else if (route.name === 'blog') {
       title = `${content.blog.metaTitle} — ${content.profile.name}`
       description = content.blog.metaDescription
       path = '/blog'

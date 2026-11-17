@@ -48,6 +48,62 @@ export type BlogPost = {
   blocks: BlogBlock[]
 }
 
+export type BotFeatureIcon = 'chat' | 'spark' | 'image' | 'mic' | 'tools' | 'stars'
+
+export type BotPlan = {
+  name: string
+  price: string
+  period: string
+  description: string
+  features: string[]
+  cta: string
+  highlight?: boolean
+  badge?: string
+}
+
+export type BotContent = {
+  metaTitle: string
+  metaDescription: string
+  eyebrow: string
+  title: string
+  lead: string
+  status: string
+  ctaPrimary: string
+  ctaSecondary: string
+  stats: { value: string; label: string }[]
+  chat: {
+    name: string
+    online: string
+    userText: string
+    botText: string
+    userText2: string
+    artLabel: string
+  }
+  featuresTitle: string
+  featuresLead: string
+  featuresEyebrow: string
+  features: { icon: BotFeatureIcon; title: string; text: string }[]
+  pricingEyebrow: string
+  pricingTitle: string
+  pricingLead: string
+  plans: BotPlan[]
+  pricingNote: string
+  refEyebrow: string
+  refTitle: string
+  refText: string
+  refCta: string
+  refMilestones: { referrals: string; reward: string }[]
+  faqTitle: string
+  faqEyebrow: string
+  faq: { q: string; a: string }[]
+  ctaTitle: string
+  ctaText: string
+  ctaButton: string
+  ctaNote: string
+  backHome: string
+  botLink: string
+}
+
 export type SiteContent = {
   meta: { title: string; description: string }
   nav: { id: string; label: string }[]
@@ -90,6 +146,7 @@ export type SiteContent = {
     case: ProjectCase
   }[]
   socials: { label: string; href: string; icon: 'github' | 'telegram' | 'linkedin' }[]
+  bot: BotContent
   ui: {
     languageLabel: string
     themeToLight: string
@@ -173,6 +230,7 @@ export const siteContent: Record<Language, SiteContent> = {
       { id: 'experience', label: 'Опыт' },
       { id: 'skills', label: 'Навыки' },
       { id: 'projects', label: 'Проекты' },
+      { id: 'bot', label: 'Бот' },
       { id: 'blog', label: 'Блог' },
       { id: 'contact', label: 'Контакты' },
     ],
@@ -569,6 +627,159 @@ export const siteContent: Record<Language, SiteContent> = {
         },
       },
     ],
+    bot: {
+      metaTitle: 'NeuroHelper — ИИ-помощник в Telegram',
+      metaDescription:
+        'Бесплатный ИИ-ассистент в Telegram: ответы с памятью диалога, тексты, перевод, идеи и генерация картинок. Попробуйте без регистрации и VPN.',
+      eyebrow: 'Мой проект',
+      title: 'NeuroHelper — ИИ-помощник в Telegram',
+      lead:
+        'Отвечает на вопросы, пишет тексты, переводит, придумывает идеи и рисует картинки. Без регистрации, установки приложений и VPN — просто чат в Telegram.',
+      status: 'Работает 24/7 · есть бесплатный тариф',
+      ctaPrimary: 'Открыть в Telegram',
+      ctaSecondary: 'Смотреть тарифы',
+      stats: [
+        { value: '0 ₽', label: 'стоит попробовать' },
+        { value: '15 / 3', label: 'запросов и картинок в день' },
+        { value: '24/7', label: 'бот на связи' },
+      ],
+      chat: {
+        name: '@kotyura_bot',
+        online: 'онлайн',
+        userText: 'Придумай три подписи к фото с утренним кофе',
+        botText:
+          'Вот три варианта: «Утро начинается здесь», «Кофе — мой личный план на день» и «Маленький ритуал, который задаёт тон».',
+        userText2: 'А теперь нарисуй обложку к посту',
+        artLabel: 'FLUX · обложка по описанию',
+      },
+      featuresTitle: 'Что умеет бот',
+      featuresLead:
+        'Один чат вместо десятка приложений: помощь с текстом, картинками и повседневными задачами.',
+      featuresEyebrow: 'Возможности',
+      features: [
+        {
+          icon: 'chat',
+          title: 'Помнит диалог',
+          text: 'Понимает контекст беседы: можно уточнять, продолжать и возвращаться к теме без повторений.',
+        },
+        {
+          icon: 'spark',
+          title: 'Тексты и идеи',
+          text: 'Посты, письма, описания товаров, планы и поздравления — в нужном тоне и объёме.',
+        },
+        {
+          icon: 'image',
+          title: 'Рисует картинки',
+          text: 'Иллюстрации, обложки и аватары по текстовому описанию — на модели FLUX.',
+        },
+        {
+          icon: 'mic',
+          title: 'Разбирает фото и голос',
+          text: 'Пришлите скриншот, фото документа или голосовое — бот поймёт и ответит.',
+        },
+        {
+          icon: 'tools',
+          title: 'Готовые инструменты',
+          text: 'Перевод, краткое содержание, переписывание, посты, идеи и код — отдельными командами.',
+        },
+        {
+          icon: 'stars',
+          title: 'Оплата внутри Telegram',
+          text: 'Premium и кредиты покупаются в пару касаний через Telegram Stars, без карты и сторонних сайтов.',
+        },
+      ],
+      pricingTitle: 'Сколько стоит',
+      pricingLead:
+        'Начните бесплатно. Если понравится — снимите лимиты на месяц или докупите кредиты.',
+      pricingEyebrow: 'Тарифы',
+      plans: [
+        {
+          name: 'Бесплатно',
+          price: '0 ₽',
+          period: 'навсегда',
+          description: 'Чтобы познакомиться с ботом и закрыть повседневные задачи.',
+          features: [
+            '15 запросов к ИИ в день',
+            '3 сгенерированные картинки в день',
+            'Все инструменты и память диалога',
+            '5 кредитов в подарок при старте',
+          ],
+          cta: 'Начать бесплатно',
+        },
+        {
+          name: 'Premium',
+          price: '250 Stars',
+          period: 'за 30 дней',
+          description: 'Для тех, кто пользуется ботом каждый день.',
+          features: [
+            '1000 запросов к ИИ в день',
+            '100 картинок в день',
+            'Все инструменты и память диалога',
+            '30 дней Premium, продление — вручную',
+          ],
+          cta: 'Оформить Premium',
+          highlight: true,
+          badge: 'Выбор большинства',
+        },
+        {
+          name: 'Кредиты',
+          price: '100 Stars',
+          period: 'за 25 кредитов',
+          description: 'Когда дневной лимит закончился, а подписка пока не нужна.',
+          features: [
+            '1 кредит = 1 запрос или картинка сверх лимита',
+            'Кредиты не сгорают',
+            'Работают на бесплатном тарифе',
+            'Плюс 5 кредитов за каждого друга',
+          ],
+          cta: 'Купить кредиты',
+        },
+      ],
+      pricingNote:
+        'Оплата проходит внутри Telegram. Цены указаны в Stars — внутренней валюте Telegram.',
+      refEyebrow: 'Реферальная программа',
+      refTitle: 'Приглашайте друзей — получайте Premium',
+      refText:
+        'За каждого друга, который начнёт пользоваться ботом, вы получаете 5 кредитов. А за активных приглашённых — дни Premium.',
+      refCta: 'Получить ссылку в боте',
+      refMilestones: [
+        { referrals: '3 друга', reward: '7 дней Premium' },
+        { referrals: '10 друзей', reward: '30 дней Premium' },
+        { referrals: '25 друзей', reward: '90 дней Premium' },
+        { referrals: '50 друзей', reward: '180 дней Premium' },
+      ],
+      faqTitle: 'Частые вопросы',
+      faqEyebrow: 'FAQ',
+      faq: [
+        {
+          q: 'Нужна регистрация или установка?',
+          a: 'Нет. Откройте бота по ссылке и напишите сообщение — аккаунт создаётся автоматически внутри Telegram.',
+        },
+        {
+          q: 'Это правда бесплатно?',
+          a: 'Да. На бесплатном тарифе доступно 15 запросов к ИИ и 3 картинки в день. Premium нужен, только если хочется больше.',
+        },
+        {
+          q: 'Как оплатить Premium?',
+          a: 'Прямо в боте через Telegram Stars. Банковская карта не нужна, подписка оформляется в пару касаний.',
+        },
+        {
+          q: 'Что будет, когда закончится дневной лимит?',
+          a: 'Можно купить кредиты — они не сгорают и дают дополнительные запросы. Или оформить Premium и снять лимиты на 30 дней.',
+        },
+        {
+          q: 'Бот работает круглосуточно?',
+          a: 'Да, на сервере настроен watchdog: при сбое бот автоматически перезапускается.',
+        },
+      ],
+      ctaTitle: 'Попробуйте NeuroHelper бесплатно',
+      ctaText:
+        'Откройте бота в Telegram и задайте первый вопрос — на это уйдёт меньше минуты.',
+      ctaButton: 'Открыть бота',
+      ctaNote: 'Без регистрации · без карты · работает в Telegram',
+      backHome: 'На главную',
+      botLink: 'https://t.me/kotyura_bot',
+    },
     socials: [
       { label: 'GitHub', href: 'https://github.com/kotokyra-dev', icon: 'github' },
       { label: 'Telegram', href: 'https://t.me/ktk314', icon: 'telegram' },
@@ -659,6 +870,7 @@ export const siteContent: Record<Language, SiteContent> = {
       { id: 'experience', label: 'Experience' },
       { id: 'skills', label: 'Skills' },
       { id: 'projects', label: 'Projects' },
+      { id: 'bot', label: 'Bot' },
       { id: 'blog', label: 'Blog' },
       { id: 'contact', label: 'Contact' },
     ],
@@ -1054,6 +1266,159 @@ export const siteContent: Record<Language, SiteContent> = {
         },
       },
     ],
+    bot: {
+      metaTitle: 'NeuroHelper — AI assistant in Telegram',
+      metaDescription:
+        'A free AI assistant in Telegram: chat with memory, writing, translation, ideas and image generation. Try it without signup or VPN.',
+      eyebrow: 'My project',
+      title: 'NeuroHelper — an AI assistant in Telegram',
+      lead:
+        'Answers questions, writes copy, translates, brainstorms ideas and draws images. No signup, no extra apps and no VPN — just a chat in Telegram.',
+      status: 'Online 24/7 · free tier available',
+      ctaPrimary: 'Open in Telegram',
+      ctaSecondary: 'See pricing',
+      stats: [
+        { value: '$0', label: 'to try it out' },
+        { value: '15 / 3', label: 'requests and images per day' },
+        { value: '24/7', label: 'always online' },
+      ],
+      chat: {
+        name: '@kotyura_bot',
+        online: 'online',
+        userText: 'Write three captions for a morning coffee photo',
+        botText:
+          'Here are three: “The morning starts here”, “Coffee is my personal plan for the day” and “A small ritual that sets the tone”.',
+        userText2: 'Now draw a cover for the post',
+        artLabel: 'FLUX · cover from a prompt',
+      },
+      featuresTitle: 'What the bot can do',
+      featuresLead:
+        'One chat instead of a dozen apps: help with writing, images and everyday tasks.',
+      featuresEyebrow: 'Features',
+      features: [
+        {
+          icon: 'chat',
+          title: 'Remembers the conversation',
+          text: 'Keeps the context: refine, continue and return to a topic without repeating yourself.',
+        },
+        {
+          icon: 'spark',
+          title: 'Writing and ideas',
+          text: 'Posts, emails, product descriptions, plans and greetings — in the right tone and length.',
+        },
+        {
+          icon: 'image',
+          title: 'Draws images',
+          text: 'Illustrations, covers and avatars from a text prompt, powered by FLUX.',
+        },
+        {
+          icon: 'mic',
+          title: 'Reads photos and voice',
+          text: 'Send a screenshot, a document photo or a voice message — the bot understands and replies.',
+        },
+        {
+          icon: 'tools',
+          title: 'Ready-made tools',
+          text: 'Translation, summaries, rewriting, posts, ideas and code as separate commands.',
+        },
+        {
+          icon: 'stars',
+          title: 'Payments inside Telegram',
+          text: 'Premium and credits are a couple of taps away via Telegram Stars — no card, no third-party sites.',
+        },
+      ],
+      pricingTitle: 'Pricing',
+      pricingLead:
+        'Start for free. If you like it, lift the limits for a month or top up credits.',
+      pricingEyebrow: 'Plans',
+      plans: [
+        {
+          name: 'Free',
+          price: '$0',
+          period: 'forever',
+          description: 'To get to know the bot and handle everyday tasks.',
+          features: [
+            '15 AI requests per day',
+            '3 generated images per day',
+            'All tools and conversation memory',
+            '5 credits as a welcome gift',
+          ],
+          cta: 'Start for free',
+        },
+        {
+          name: 'Premium',
+          price: '250 Stars',
+          period: 'for 30 days',
+          description: 'For people who use the bot every day.',
+          features: [
+            '1,000 AI requests per day',
+            '100 images per day',
+            'All tools and conversation memory',
+            '30 days of Premium, renewed manually',
+          ],
+          cta: 'Get Premium',
+          highlight: true,
+          badge: 'Most popular',
+        },
+        {
+          name: 'Credits',
+          price: '100 Stars',
+          period: 'for 25 credits',
+          description: 'When the daily limit is gone but a subscription is not needed yet.',
+          features: [
+            '1 credit = 1 request or image beyond the limit',
+            'Credits never expire',
+            'Works on the free tier',
+            'Plus 5 credits for every friend',
+          ],
+          cta: 'Buy credits',
+        },
+      ],
+      pricingNote:
+        'Payment happens inside Telegram. Prices are in Stars, Telegram’s built-in currency.',
+      refEyebrow: 'Referral program',
+      refTitle: 'Invite friends — earn Premium',
+      refText:
+        'Get 5 credits for every friend who starts using the bot. Active invites also earn you Premium days.',
+      refCta: 'Get your link in the bot',
+      refMilestones: [
+        { referrals: '3 friends', reward: '7 days of Premium' },
+        { referrals: '10 friends', reward: '30 days of Premium' },
+        { referrals: '25 friends', reward: '90 days of Premium' },
+        { referrals: '50 friends', reward: '180 days of Premium' },
+      ],
+      faqTitle: 'Frequently asked questions',
+      faqEyebrow: 'FAQ',
+      faq: [
+        {
+          q: 'Do I need to sign up or install anything?',
+          a: 'No. Open the bot from the link and send a message — the account is created automatically inside Telegram.',
+        },
+        {
+          q: 'Is it really free?',
+          a: 'Yes. The free tier includes 15 AI requests and 3 images per day. Premium is only for those who want more.',
+        },
+        {
+          q: 'How do I pay for Premium?',
+          a: 'Right in the bot with Telegram Stars. No bank card needed, and the subscription takes a couple of taps.',
+        },
+        {
+          q: 'What happens when the daily limit runs out?',
+          a: 'Buy credits — they never expire and add extra requests. Or get Premium and remove the limits for 30 days.',
+        },
+        {
+          q: 'Is the bot available around the clock?',
+          a: 'Yes. A watchdog on the server restarts it automatically if something goes wrong.',
+        },
+      ],
+      ctaTitle: 'Try NeuroHelper for free',
+      ctaText:
+        'Open the bot in Telegram and ask your first question — it takes less than a minute.',
+      ctaButton: 'Open the bot',
+      ctaNote: 'No signup · no card · works in Telegram',
+      backHome: 'Back home',
+      botLink: 'https://t.me/kotyura_bot',
+    },
     socials: [
       { label: 'GitHub', href: 'https://github.com/kotokyra-dev', icon: 'github' },
       { label: 'Telegram', href: 'https://t.me/ktk314', icon: 'telegram' },

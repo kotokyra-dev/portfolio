@@ -2,6 +2,7 @@ import './App.css'
 import { Analytics } from '@vercel/analytics/react'
 import { BlogPage } from './components/BlogPage'
 import { BlogPostPage } from './components/BlogPostPage'
+import { BotPage } from './components/BotPage'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Home } from './components/Home'
@@ -29,6 +30,7 @@ function App() {
 
       <main>
         {route.name === 'home' && <Home />}
+        {route.name === 'bot' && <BotPage />}
         {route.name === 'blog' && <BlogPage />}
         {route.name === 'post' && <BlogPostPage slug={route.slug} />}
         {route.name === 'notFound' && <NotFound />}

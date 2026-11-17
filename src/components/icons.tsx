@@ -152,3 +152,40 @@ export function GaugeIcon(props: IconProps) {
   )
 }
 
+export function ChatIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" {...stroke} aria-hidden="true" {...props}>
+      <path d="M21 11.5a7.5 7.5 0 0 1-7.5 7.5H7l-4 3v-9.5a7.5 7.5 0 0 1 7.5-7.5h3A7.5 7.5 0 0 1 21 11.5Z" />
+      <path d="M8 10.5h8M8 14h5" />
+    </svg>
+  )
+}
+
+export function ImageIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" {...stroke} aria-hidden="true" {...props}>
+      <rect x="3" y="4" width="18" height="16" rx="3" />
+      <circle cx="8.5" cy="9.5" r="1.6" />
+      <path d="m4 17.5 4.8-4.2 3.9 3 3.2-2.6L20 17" />
+    </svg>
+  )
+}
+
+export function MicIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" {...stroke} aria-hidden="true" {...props}>
+      <rect x="9" y="2.5" width="6" height="11" rx="3" />
+      <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" />
+    </svg>
+  )
+}
+
+export function StarsIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" {...stroke} aria-hidden="true" {...props}>
+      <path d="m11 3 1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8L11 3Z" />
+      <path d="m18.5 15.5.5 1.7 1.7.5-1.7.5-.5 1.7-.5-1.7-1.7-.5 1.7-.5.5-1.7Z" />
+    </svg>
+  )
+}
+

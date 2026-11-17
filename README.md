@@ -57,6 +57,7 @@ npm run test     # тесты (Vitest)
 | Страница        | RU              | EN                 |
 | --------------- | --------------- | ------------------ |
 | Главная         | `/`             | `/en`              |
+| Страница бота   | `/bot`          | `/en/bot`          |
 | Блог            | `/blog`         | `/en/blog`         |
 | Статья блога    | `/blog/:slug`   | `/en/blog/:slug`   |
 | Неизвестный URL | 404-страница    | 404-страница       |
@@ -75,8 +76,9 @@ Open Graph и hreflang обновляются в `src/hooks/usePageMeta.ts`.
 - `public/llms.txt` — краткое описание сайта для ИИ-поисковиков.
 - `@vercel/analytics` — просмотры и источники (включается в настройках проекта Vercel).
 - События аналитики: `contact_submit`, `telegram_click`, `case_open`, `demo_open`,
-  `demo_link`, `code_link`, `cta_click`, `language_change` — отправляются из
-  `src/lib/analytics.ts`. Смотреть в Vercel → Project → Analytics → Events.
+  `demo_link`, `code_link`, `cta_click`, `language_change`, `bot_open`,
+  `bot_pricing_view` — отправляются из `src/lib/analytics.ts`. Смотреть
+  в Vercel → Project → Analytics → Events.
 - `npm run indexnow` — отправляет все URL из `sitemap.xml` в IndexNow
   (Bing, Яндекс и другие поисковики). Запускать после деплоя, когда менялись
   страницы. Ключ лежит в `public/<key>.txt` и в `scripts/indexnow.mjs`.
@@ -89,6 +91,7 @@ Open Graph и hreflang обновляются в `src/hooks/usePageMeta.ts`.
 | Опыт работы                  | `experience` в `src/content.ts`        |
 | Отзывы                       | `testimonials` в `src/content.ts`      |
 | Статьи блога                 | `blog.posts` в `src/content.ts`        |
+| Страница бота                | `bot` в `src/content.ts`               |
 | Навыки, проекты и кейсы      | `src/content.ts`                       |
 | Тексты демо-проектов         | `src/demos/*.tsx`                      |
 | Цвета, шрифты, отступы       | `src/index.css` (переменные в `:root`) |
@@ -144,6 +147,7 @@ src/
     ├── CaseModal.tsx    # модальное окно кейса
     ├── BlogPage.tsx     # список статей
     ├── BlogPostPage.tsx # страница статьи
+    ├── BotPage.tsx      # страница NeuroHelper: тарифы и FAQ
     ├── NotFound.tsx     # 404
     ├── Contact.tsx      # контакты
     ├── ContactForm.tsx  # форма связи
